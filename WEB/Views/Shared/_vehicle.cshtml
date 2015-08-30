@@ -1,0 +1,34 @@
+﻿<div class="row" ng-controller="vehicleController">
+
+    <div class="row">
+        <label>{{result}}</label>
+    </div>
+    <label>{{pageName}}</label>
+    <br />
+   
+    <div class="row">
+        <label>Year</label>
+        <select name="year" ng-model="resource.Year" ng-change="getMakes()" >
+            <option ng-repeat="op in yearLookup.data" value="{{op}}" selected="{{op=resource.Year}}">{{op}}</option>
+        </select>
+
+    </div>
+    <div class="row">
+        <label>Make</label>
+        <select name="make" ng-model="resource.Make" ng-change="getmodles()" >
+            <option ng-repeat="op in yearMake.data" value="{{op}}" selected="{{op=resource.Make}}">{{op}}</option>
+        </select>
+
+    </div>
+    <div class="row">
+        <label>Models</label>
+        <select name="model" ng-model="resource.Model">
+            <option ng-repeat="op in YearMakeModel.data" value="{{op}}">{{op}}</option>
+        </select>
+
+    </div>
+    <div class="row">
+        <input type="button" value="Save" ng-click="save();" />
+    </div>
+    @*<div>{{yearLookup}}</div>*@
+</div>

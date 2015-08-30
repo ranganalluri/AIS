@@ -1,0 +1,23 @@
+﻿@model WEB.Models.WorkFlowContext
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div ng-view></div>
+
+<script type="text/javascript">
+    @*$(document).ready(function() {
+        var url = '@Model.Url';
+        var baseurl = angular.module('baseurl', '@Model.Url');
+        var $injector = angular.injector(['ng']);
+        angular.element($('html')).$injector().invoke(function ($location) {
+            $location.path(url);
+        });
+    });*@
+    
+</script>
+
+
