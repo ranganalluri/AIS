@@ -178,9 +178,11 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
+    <Compile Include="Extensions\UrihelperExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Processors\HalPorcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\Activity.cs" />
     <Compile Include="Rules\BaseRule.cs" />

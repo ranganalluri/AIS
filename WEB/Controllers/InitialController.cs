@@ -13,7 +13,7 @@ namespace WEB.Controllers
     public class InitialController : Controller
     {
         // GET: api/Initial
-        public async  Task<List<BaseNode>> Index(ContextResource resource)
+        public async  Task<List<Link>> Index(ContextResource resource)
         {
             using (var client = new HttpClient())
             {
@@ -28,7 +28,7 @@ namespace WEB.Controllers
                 HttpResponseMessage response = null;
                 response = await client.PostAsJsonAsync("api/Initial/", new StringContent(data));
                 var basenode =   await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<BaseNode>>(basenode);
+                return JsonConvert.DeserializeObject<List<Link>>(basenode);
             }
         }
 

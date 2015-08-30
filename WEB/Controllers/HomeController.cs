@@ -16,12 +16,12 @@ namespace WEB.Controllers
             ViewBag.Title = "Home Page";
             var intial = new InitialController();
             var node = await intial.Index(new ContextResource() { Ip = "111", Lob = "Cycle", UserType = "Customer", Zip = "12345" });
-            var firstOrDefault = node.Find(n => n.nodename.StartsWith(Constants.nextrel))._links.FirstOrDefault();
+            var firstOrDefault = node.Find(n => n.NodeName.StartsWith(Constants.nextrel)).Href;
             if (firstOrDefault != null)
             {
-                var workFlowId = GuidHelper.FindFirstGuid(firstOrDefault.href);
-                System.Web.HttpContext.Current.Response.Cookies.Add(new HttpCookie(Constants.WorkFlowId, workFlowId.ToString("N")));
-                var url = firstOrDefault.href.Replace(workFlowId.ToString("D"), "icliq");
+                var workFlowId = GuidHelper.FindFirstGuid(firstOrDefault);
+                System.Web.HttpContext.Current.Response.Cookies.Add(new HttpCookie(Constants.WorkFlowId, workFlowId.ToString()));
+                var url = firstOrDefault;
                 var route = new RouteValueDictionary {{"id", url}};
                 return RedirectToAction("Index", "NB");
             }

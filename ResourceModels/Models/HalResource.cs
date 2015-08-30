@@ -5,26 +5,27 @@ namespace ResourceModels.Models
 {
     public class HalResource<T> where T:HalResourceModel
     {
-        public List<BaseNode> _links { set; get; }  
+        public NavigationResource Navigation { set; get; }
         public T Resource { set; get; }
+        public List<Link> Links { set; get; }  
     }
     public class HalResourceModel
     {
-        public NavigationResource Navigation { set; get; }
-
-    }
-
-    public class Link
-    {
-        public string href { set; get; }
-        public string name { set; get; }
+        public List<Link> Links { set; get; }  
        
     }
 
-    public class BaseNode
+    public class Link:LinkNode
     {
-        public string nodename { set; get; }
-        public List<Link> _links { set; get; }
+        
+        public string NodeName { set; get; }
+       
+    }
+
+    public class LinkNode
+    {
+        public string Href { set; get; }
+        public string Rel { set; get; }
     }
 
     public class NavigationResource
@@ -39,7 +40,7 @@ namespace ResourceModels.Models
 
     public abstract class BaserNavigationResource:INavigationResource
     {
-        public BaseNode _links { set; get; }
+        public LinkNode _links { set; get; }
         public string NavigationNodeName { set; get; }
         public string ItemType { set; get; }
         public string CanNavigate { set; get; }

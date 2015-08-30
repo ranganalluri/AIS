@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DomainModel\PolicyContainer.cs" />
+    <Compile Include="Enums\PageType.cs" />
     <Compile Include="Models\ContextResource.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DriverViewResource.cs" />
