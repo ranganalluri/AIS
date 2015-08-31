@@ -17,7 +17,14 @@
             templateUrl: '/Home/GetPartialView/?name=_vehicle'
             //controller: 'vehicleController'
         }).
-       
+         when('/driver/icliq', {
+             templateUrl: '/Home/GetPartialView/?name=_driver'
+             //controller: 'vehicleController'
+         }).
+        when('/driver/icliq/:id', {
+            templateUrl: '/Home/GetPartialView/?name=_driver'
+            //controller: 'vehicleController'
+        }).
         otherwise({ redirectTo: '/routehandler' });
 
     $locationProvider.html5Mode(false).hashPrefix('/sales');

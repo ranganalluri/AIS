@@ -12,5 +12,8 @@ namespace ResourceModels.Models
         public string Year { set; get; }
         public string Make { set; get; }
         public string Model { set; get; }
+        public bool MoreToAdd { set; get; }
+        public bool IsEdit { set; get; }
+        public bool IsDelete { set; get; }
     }
 }

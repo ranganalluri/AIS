@@ -13,6 +13,11 @@ namespace ResourceModels.Models
     {
         public List<Link> Links { set; get; }
         public NavigationResource Navigation { set; get; }
+        public HalResourceModel()
+        {
+            Links=new List<Link>();
+        }
+       
     }
 
     public class Link:LinkNode

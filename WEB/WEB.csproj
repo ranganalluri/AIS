@@ -178,6 +178,7 @@
     <Content Include="Scripts\app\baseController.js" />
     <Content Include="Scripts\app\Constants.js" />
     <Content Include="Scripts\app\customerController.js" />
+    <Content Include="Scripts\app\driverController.js" />
     <Content Include="Scripts\app\navigationFactory.js" />
     <Content Include="Scripts\app\routes.js" />
     <Content Include="Scripts\app\vehicleController.js" />
@@ -236,6 +237,7 @@
     <Content Include="Views\Shared\_routehandler.cshtml" />
     <Content Include="Scripts\underscore.min.map" />
     <Content Include="Views\Shared\_vehicleSummary.cshtml" />
+    <Content Include="Views\Shared\_driver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

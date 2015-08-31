@@ -84,11 +84,28 @@ namespace DataAccess.Controllers
 
             returnvalue.Resource=new VehcleModel();
             returnvalue.Resource.Vehcile = value;
-           BuildSwmmary(policy,returnvalue);
+            BuildSwmmary(policy,returnvalue);
             var hal = new HalPorcessor(null, PageType.Vehicle, host, key, Url);
-            returnvalue.Resource.Links = hal.BuildHalResource();
+
+            BuildLinks(value, returnvalue);
+
             returnvalue.Links = hal.FillInitialHalList();
             return returnvalue;
+        }
+
+        private void BuildLinks(Vehicle value, HalResource<VehcleModel> returnvalue)
+        {
+            if (!value.MoreToAdd)
+                returnvalue.Resource.Vehcile.Links.Add(new Link()
+                {
+                    Href = Url.Link("DefaultApi", new {controller = "Driver", key = "icliq"}),
+                    NodeName = "next driver-node"
+                });
+            returnvalue.Resource.Vehcile.Links.Add(new Link()
+            {
+                Href = Url.Link("DefaultApi", new {controller = "Vehicle", key = "icliq"}),
+                NodeName = "vehicle-node"
+            });
         }
 
         // PUT: api/Vehicle/5
