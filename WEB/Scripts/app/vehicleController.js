@@ -2,10 +2,11 @@
 
     $scope.resource = {};
     $scope.pageName = "Vehicle";
-    $http.get('/api/values/Vehicle/1').then(function (success) {
-        $scope.resource = success.data.Resource;
-
-        if ($scope.resource.Year!='') {
+    $scope.vehicleSummary=null;
+    $http.get('/api/values/Vehicle/iclicq').then(function (success) {
+        $scope.resource = success.data.Resource.Vehicle;
+        $scope.vehicleSummary = success.data.Resource.VehcileSummary;
+        if ($scope.resource != null && $scope.resource.Vehicle != null && $scope.resource.Vehicle.Year != '') {
             $scope.getMakes();
         }
         
@@ -13,9 +14,12 @@
         $scope.data = error.resource;
     });
 
+    
     $scope.save = function () {
-        $http.post('/api/values/Vehicle', $scope.resource).then(function (success) {
+        $http.post('/api/values/Vehicle/iclicq', $scope.resource).then(function (success) {
             $scope.result = "Success";
+            $scope.resource = success.data.Resource.Vehicle;
+            $scope.vehicleSummary = success.data.Resource.VehcileSummary;
         }, function (error) {
             $scope.result = error;
         });

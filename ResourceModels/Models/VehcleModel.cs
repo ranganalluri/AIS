@@ -1,9 +1,10 @@
-﻿namespace ResourceModels.Models
+﻿using System.Collections.Generic;
+
+namespace ResourceModels.Models
 {
     public class VehcleModel:HalResourceModel
     {
-        public string Year { set; get; }
-        public string Make { set; get; }
-        public string Model { set; get; }
+        public Vehicle Vehcile { set; get; }
+        public List<VehicleSummary> VehcileSummary { set; get; }
     }
 }

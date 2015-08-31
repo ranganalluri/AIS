@@ -47,6 +47,8 @@
     <Compile Include="Models\DriverViewResource.cs" />
     <Compile Include="Models\HalResource.cs" />
     <Compile Include="Models\VehcleModel.cs" />
+    <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Models\VehicleSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

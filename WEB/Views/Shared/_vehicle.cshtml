@@ -5,7 +5,12 @@
     </div>
     <label>{{pageName}}</label>
     <br />
-   
+    
+    <div class="row" ng-if="vehicleSummary">
+        @Html.Partial("_vehicleSummary")
+    </div>
+    <br/><br/>
+
     <div class="row">
         <label>Year</label>
         <select name="year" ng-model="resource.Year" ng-change="getMakes()" >

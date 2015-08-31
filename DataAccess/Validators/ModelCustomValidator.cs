@@ -37,6 +37,7 @@ namespace DataAccess.Validators
         public MyRegistry()
         {
             For<IValidator<Customer>>().Use<CustomerValidator>();
+            For<IValidator<Vehicle>>().Use<VehicleValidator>();
            
         }
     }

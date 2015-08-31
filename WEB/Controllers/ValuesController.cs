@@ -53,7 +53,8 @@ namespace WEB.Controllers
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Add("ApiHost", request.RequestUri.AbsoluteUri);
-                var path = request.RequestUri.AbsolutePath.Replace("/values","").Replace("iclicq","?key="+workflowId);
+                //var path = request.RequestUri.AbsolutePath.Replace("/values","").Replace("iclicq","?key="+workflowId);
+                var path = request.RequestUri.AbsolutePath.Replace("/values", "").Replace("iclicq",workflowId);
                 //request.Headers.Add("host",request.RequestUri.AbsoluteUri);
                 // New code:
                 HttpResponseMessage response = null;

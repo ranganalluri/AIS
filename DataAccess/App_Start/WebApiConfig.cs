@@ -4,7 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using AutoMapper;
 using Newtonsoft.Json.Serialization;
+using ResourceModels.Models;
 
 namespace DataAccess
 {
@@ -13,7 +15,7 @@ namespace DataAccess
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            Mapper.CreateMap<Vehicle, VehicleSummary>();
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -27,15 +29,15 @@ namespace DataAccess
 
             config.Routes.MapHttpRoute(
               name: "DefaultApi",
-              routeTemplate: "api/{controller}/{id}",
-              defaults: new { id = RouteParameter.Optional }
-          );
+              routeTemplate: "api/{controller}/{key}/{id}",
+              defaults: new { key = RouteParameter.Optional,
+                              id=RouteParameter.Optional }
+               );
              
-
             config.Routes.MapHttpRoute(
                 name: "DefaultApiAction",
-                routeTemplate: "api/{controller}/{action}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{action}/{key}/{id}",
+                defaults: new { key = RouteParameter.Optional, id = RouteParameter.Optional }
             );
           
         }

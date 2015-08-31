@@ -23,14 +23,18 @@ namespace DataAccess.Controllers
         }
 
         // GET: api/Custmor/5
-        public HalResource<Customer> Get(string key)
+        public HalResource<Customer> Get(string key,int id=0)
         {          
           var policy= (PolicyContainer)HttpContext.Current.Cache["policy-" + key];
-        
-          HttpContext.Current.Cache.Insert("policy-" + key, policy);
+
+          var returnvalue = new HalResource<Customer> { Resource = new Customer() };
 
             var host = Request.GetHeader("ApiHost");
-            var returnvalue = new HalResource<Customer> {Resource = new Customer()};
+            if (policy != null && policy.Customer!=null)
+            {
+                returnvalue.Resource = policy.Customer;
+            }
+            
 
             var hal = new HalPorcessor(null, PageType.Customer, host, key, Url);
              returnvalue.Resource.Links= hal.BuildHalResource();
@@ -40,15 +44,18 @@ namespace DataAccess.Controllers
             return returnvalue;
 
 
-        }
-
-       
+        }       
 
         // POST: api/Custmor
         public HalResource<Customer> Post(string key, Customer value)
         {
             var error = new ModelCustomValidator<Customer>().Validate1(value);
+
             var policy = (PolicyContainer)HttpContext.Current.Cache["policy-" + key];
+            if (policy != null)
+            {
+                policy.Customer = value;
+            }
 
             HttpContext.Current.Cache.Insert("policy-" + key, policy);
 

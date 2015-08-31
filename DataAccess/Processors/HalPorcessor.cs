@@ -31,8 +31,8 @@ namespace DataAccess.Processors
         public List<Link> FillInitialHalList()
         {
 
-            var link = _uriHelper.Link("DefaultApi", new { controller = "Customer", id = "1", }); //string.Format("{0}api/Customer/{1}", ApiHost, new Guid(_key));
-            link = link.Replace("Customer", "Customer/icliq/" + _key);
+            var link = _uriHelper.Link("DefaultApi", new { controller = "Customer", key = _key, }); //string.Format("{0}api/Customer/{1}", ApiHost, new Guid(_key));
+           // link = link.Replace("Customer", "Customer/icliq/" + _key);
             var links = new List<Link>
                        {
                            new Link()

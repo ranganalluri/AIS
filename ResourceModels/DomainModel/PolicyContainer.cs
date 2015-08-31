@@ -1,4 +1,5 @@
-﻿using ResourceModels.Models;
+﻿using System.Collections.Generic;
+using ResourceModels.Models;
 
 namespace ResourceModels.DomainModel
 {
@@ -6,9 +7,15 @@ namespace ResourceModels.DomainModel
     {
         public string Key { set; get; }
         public Customer Customer { set; get; }
-        public VehcleModel Vehcle { set; get; }
-        public DriverViewResource Driver { set; get; }
+        public List<Vehicle> Vehcles { set; get; }
+        public List<DriverViewResource> Drivers { set; get; }
         public INavigationResource Navigation { set; get; }
+
+        public PolicyContainer()
+        {
+            Vehcles=new List<Vehicle>();
+            Drivers=new List<DriverViewResource>();
+        }
     }
 
     public interface IPolicyContainer

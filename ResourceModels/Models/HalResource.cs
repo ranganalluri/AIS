@@ -5,14 +5,14 @@ namespace ResourceModels.Models
 {
     public class HalResource<T> where T:HalResourceModel
     {
-        public NavigationResource Navigation { set; get; }
+        
         public T Resource { set; get; }
         public List<Link> Links { set; get; }  
     }
     public class HalResourceModel
     {
-        public List<Link> Links { set; get; }  
-       
+        public List<Link> Links { set; get; }
+        public NavigationResource Navigation { set; get; }
     }
 
     public class Link:LinkNode

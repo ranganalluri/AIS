@@ -235,6 +235,7 @@
     <Content Include="Views\NB\Index.cshtml" />
     <Content Include="Views\Shared\_routehandler.cshtml" />
     <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Views\Shared\_vehicleSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

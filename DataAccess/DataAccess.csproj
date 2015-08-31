@@ -190,6 +190,7 @@
     <Compile Include="Validators\CustomerValidator.cs" />
     <Compile Include="Validators\Errors.cs" />
     <Compile Include="Validators\ModelCustomValidator.cs" />
+    <Compile Include="Validators\VehicleValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

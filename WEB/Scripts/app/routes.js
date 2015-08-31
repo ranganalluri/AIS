@@ -13,7 +13,7 @@
              templateUrl: '/Home/GetPartialView/?name=_vehicle'
              //controller: 'vehicleController'
          }).
-        when('/vehicle/:id/icliq', {
+        when('/vehicle/icliq/:id', {
             templateUrl: '/Home/GetPartialView/?name=_vehicle'
             //controller: 'vehicleController'
         }).

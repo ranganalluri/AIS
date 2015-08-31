@@ -12,12 +12,7 @@ namespace DataAccess.Controllers
 {
     public class InitialController : ApiController
     {
-        // GET: api/Initial
-        public void Get()
-        {
-          
-        }
-
+      
         // GET: api/Initial/5
         public string Get(int id)
         {
@@ -45,14 +40,5 @@ namespace DataAccess.Controllers
 
         }
 
-        // PUT: api/Initial/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Initial/5
-        public void Delete(int id)
-        {
-        }
     }
 }
