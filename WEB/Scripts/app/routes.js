@@ -2,20 +2,20 @@
    
     $routeProvider.
          when('/customer/icliq', {
-             templateUrl: '/Home/GetPartialView/?name=_customer',
-             controller: 'userController'
+             templateUrl: '/Home/GetPartialView/?name=_customer'
+             //controller: 'userController'
          }).
         when('/routehandler', {
-            templateUrl: '/Home/GetPartialView/?name=_routehandler',
-            controller: 'baseController'
+            templateUrl: '/Home/GetPartialView/?name=_routehandler'
+           // controller: 'baseController'
         }).
          when('/vehicle/icliq', {
-             templateUrl: '/Home/GetPartialView/?name=_vehicle',
-             controller: 'vehicleController'
+             templateUrl: '/Home/GetPartialView/?name=_vehicle'
+             //controller: 'vehicleController'
          }).
-        when('/vehicle/:id/icliq', {
-            templateUrl: '/Home/GetPartialView/?name=_vehicle',
-            controller: 'vehicleController'
+        when('/vehicle/:id/icliq', { checkins
+            templateUrl: '/Home/GetPartialView/?name=_vehicle'
+            //controller: 'vehicleController'
         }).
        
         otherwise({ redirectTo: '/routehandler' });

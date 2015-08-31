@@ -2,6 +2,7 @@
 
     $scope.resource = {};
     $scope.pageName = "Customer";
+
     $http.get('/api/values/Customer/iclicq').then(function (success) {
         $scope.resource = success.data.Resource;
 
@@ -19,8 +20,5 @@
     };   
 }]);
 
-CA.Controllers.controller('baseController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
 
-    $location.path('/customer/icliq');
-}]);
 

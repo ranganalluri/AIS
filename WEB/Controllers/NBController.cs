@@ -13,7 +13,7 @@ namespace WEB.Controllers
         public ActionResult Index(string id)
         {
            var model= new WorkFlowContext(id);
-            model.Url = "Customer/icliq";
+           model.Url = "/customer/icliq";
             return View(model);
         }
 

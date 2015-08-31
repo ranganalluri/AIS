@@ -7,16 +7,13 @@
 <h2>Index</h2>
 
 <div ng-view></div>
-
+<input type="hidden" id="baseUrl" value=""/>
 <script type="text/javascript">
-    @*$(document).ready(function() {
+    $(document).ready(function() {
         var url = '@Model.Url';
-        var baseurl = angular.module('baseurl', '@Model.Url');
-        var $injector = angular.injector(['ng']);
-        angular.element($('html')).$injector().invoke(function ($location) {
-            $location.path(url);
-        });
-    });*@
+        CA.Controllers.value('intialUrl', url);
+        $('#baseUrl').val(url);
+    });
     
 </script>
 
