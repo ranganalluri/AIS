@@ -1,6 +1,11 @@
 ﻿namespace ResourceModels.Models
 {
-    public class DriverViewResource:HalResourceModel
+    public class DriverViewResource:BaseViewResource
+    {
+        public DriverItem DriverInformation { set; get; }
+    }
+
+    public class DriverItem
     {
         public string Id { set; get; }
         public string Name { set; get; }

@@ -16,7 +16,7 @@ namespace WEB.Controllers
             ViewBag.Title = "Home Page";
             var intial = new InitialController();
             var node = await intial.Index(new ContextResource() { Ip = "111", Lob = "Cycle", UserType = "Customer", Zip = "12345" });
-            var firstOrDefault = node.Find(n => n.NodeName.StartsWith(Constants.nextrel)).Href;
+            var firstOrDefault = node.Find(n => n.Title.StartsWith(Constants.nextrel)).Href;
             if (firstOrDefault != null)
             {
                 var workFlowId = GuidHelper.FindFirstGuid(firstOrDefault);

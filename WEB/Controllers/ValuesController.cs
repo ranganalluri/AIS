@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -49,17 +50,18 @@ namespace WEB.Controllers
             }
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:49959");
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["AppServer"]);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("ApiHost", request.RequestUri.AbsoluteUri);
+                               
                 //var path = request.RequestUri.AbsolutePath.Replace("/values","").Replace("iclicq","?key="+workflowId);
                 var path = request.RequestUri.AbsolutePath.Replace("/values", "").Replace("iclicq",workflowId);
                 //request.Headers.Add("host",request.RequestUri.AbsoluteUri);
                 // New code:
                 HttpResponseMessage response = null;
-                if (request.Method == HttpMethod.Get)
-                {                   
+                if (request.Method == HttpMethod.Get || request.Method==HttpMethod.Put)
+                {
+                    client.DefaultRequestHeaders.Add("ApiHost", ConfigurationManager.AppSettings["UIServer"]);
                     response = await client.GetAsync(path);
                 }
                  
@@ -69,7 +71,7 @@ namespace WEB.Controllers
                     var data = new StringContent (await request.Content.ReadAsStringAsync());
                     data.Headers.Clear();
                     data.Headers.Add("content-type", "application/json");
-                    data.Headers.Add("ApiHost", request.RequestUri.AbsoluteUri);
+                    data.Headers.Add("ApiHost", ConfigurationManager.AppSettings["UIServer"]);
                     var json=Json(data);
                    
                         response = await client.PostAsync(path,data);

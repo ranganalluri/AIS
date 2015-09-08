@@ -157,6 +157,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\GuidHelper.cs" />
+    <Compile Include="Hypermedia\Sample.cs" />
     <Compile Include="Models\WorkFlowContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

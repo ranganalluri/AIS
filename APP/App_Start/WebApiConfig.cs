@@ -1,0 +1,46 @@
+﻿using System.Web.Http;
+using System.Web.Http.Cors;
+using AutoMapper;
+using APP.Hypermedia;
+using Newtonsoft.Json.Serialization;
+using ResourceModels.Models;
+
+namespace APP
+{
+    public static class WebApiConfig
+    {
+        public static void Register(HttpConfiguration config)
+        {
+            // Web API configuration and services
+            Mapper.CreateMap<Vehicle, VehicleSummary>();
+            // Web API routes
+            config.MapHttpAttributeRoutes();
+
+            var json = config.Formatters.JsonFormatter;
+            json.UseDataContractJsonSerializer = true;
+            json.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+
+            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            
+            config.Formatters.Add(new JsonHalMediaTypeFormatter());
+
+            config.EnableCors(new EnableCorsAttribute("*","*","*"));
+
+            config.Routes.MapHttpRoute(
+              name: "DefaultApi",
+              routeTemplate: "api/{controller}/{key}/{id}",
+              defaults: new
+              {
+                  key = RouteParameter.Optional,
+                  id = RouteParameter.Optional
+              });
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApiAction",
+                routeTemplate: "api/{controller}/{action}/{key}/{id}",
+                defaults: new { key = RouteParameter.Optional, id = RouteParameter.Optional }
+            );
+          
+        }
+    }
+}

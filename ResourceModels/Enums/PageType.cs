@@ -11,6 +11,10 @@ namespace ResourceModels.Enums
         Customer,
         Vehicle,
         Driver,
-        Initial
+        Initial,
+        DriverHistoryLanding,
+        DriverHistroy,
+        Quote,
+        Coverage
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.ApplicationServer.Caching;
 
-namespace Test.asp
+namespace Test.Caching
 {
     /// <summary>
     /// Summary description for Handler1

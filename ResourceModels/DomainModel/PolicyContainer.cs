@@ -8,13 +8,13 @@ namespace ResourceModels.DomainModel
         public string Key { set; get; }
         public Customer Customer { set; get; }
         public List<Vehicle> Vehcles { set; get; }
-        public List<DriverViewResource> Drivers { set; get; }
-        public INavigationResource Navigation { set; get; }
+        public List<DriverItem> Drivers { set; get; }
+      
 
         public PolicyContainer()
         {
             Vehcles=new List<Vehicle>();
-            Drivers=new List<DriverViewResource>();
+            Drivers=new List<DriverItem>();
         }
     }
 

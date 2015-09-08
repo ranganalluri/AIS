@@ -4,16 +4,20 @@
     $scope.pageName = "Vehicle";
     $scope.vehicleSummary = null;
 
-    $http.get('/api/values/Vehicle/iclicq').then(function (success) {
-        $scope.resource = success.data.Resource.Vehicle;
-        $scope.vehicleSummary = success.data.Resource.VehcileSummary;
-       
-        
-    }, function (error) {
-        $scope.data = error.resource;
-    });
+    $scope.getVehicles = function () {
+        $http.get('/api/values/Vehicle/iclicq').then(function (success) {
+            $scope.resource = success.data.Vehicle;
+            $scope.vehicleSummary = success.data.VehcileSummary;
 
-    $http.get('/api/values/lookup/GetYears').then(function (success) {
+
+        }, function (error) {
+            $scope.data = error.resource;
+        })
+    };
+
+    $scope.getVehicles();
+
+    $http.get('/api/values/lookup/GetYears/icliq').then(function (success) {
         $scope.yearLookup = success;
     }, function (error) { console.log(error); });
 
@@ -21,8 +25,7 @@
         $scope.resource.MoreToAdd = true;
         $http.post('/api/values/Vehicle/iclicq', $scope.resource).then(function (success) {
             $scope.result = "Success";
-            $scope.resource = success.data.Resource.Vehicle;
-            $scope.vehicleSummary = success.data.Resource.VehcileSummary;
+            $scope.getVehicles();
         }, function (error) {
             $scope.result = error;
         });
@@ -40,17 +43,15 @@
     };
     $scope.getMakes = function () {
 
-        $http.get('/api/values/lookup/Getmakes/' + $scope.resource.Year).then(function (success) {
+        $http.get('/api/values/lookup/Getmakes/icliq/' + $scope.resource.Year).then(function (success) {
             $scope.yearMake = success;
 
         }, function (error) { console.log(error); });
 
     };
-
-   
-
+  
     $scope.getmodles = function () {
-        $http.get('/api/values/lookup/GetModel/' + $scope.resource.Year + '/' + $scope.resource.Make).then(function (success) {
+        $http.get('/api/values/lookup/GetModel/icliq/' + $scope.resource.Year + '/' + $scope.resource.Make).then(function (success) {
             $scope.YearMakeModel = success;
         }, function (error) { console.log(error); });
     };
