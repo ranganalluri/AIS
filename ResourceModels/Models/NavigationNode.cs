@@ -16,5 +16,6 @@ namespace ResourceModels.Models
         public string ItemType { get; set; }
        
         public PageType NavigationNodeName { get; set; }
+        
     }
 }

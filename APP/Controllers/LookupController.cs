@@ -31,7 +31,7 @@ namespace APP.Controllers
 
         [HttpGet]
         [Route("api/lookup/Getmakes/{key}/{year}")]
-        public List<string> Getmakes(string key,string Year)
+        public List<string> Getmakes(string key,string year)
         {
             return new List<string>() { "Audi", "Audi1", "Audi2" };
         }

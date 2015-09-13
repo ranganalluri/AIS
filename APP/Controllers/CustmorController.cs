@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Routing;
+using APP.Navigation;
 using APP.Processors;
 using APP.Validators;
 using APP.Extensions;
@@ -16,9 +17,14 @@ namespace APP.Controllers
 {
     public class CustomerController : BaseController
     {
-      
+
+        public CustomerController(INavigation navigation) : base(navigation)
+        {
+           
+        }        
         public CustomerViewResource Get(string key,int id=0)
         {          
+            
           var policy= (PolicyContainer)HttpContext.Current.Cache["policy-" + key];
 
             var returnvalue=new CustomerViewResource();
@@ -48,9 +54,9 @@ namespace APP.Controllers
         public HttpResponseMessage Post(string key, Customer value)
         {
             HttpResponseMessage response = null;
-            var error = new ModelCustomValidator<Customer>().Validate1(value);
+            var error = base.ValidateModel(value);
 
-            if (error.Count>0)
+            if (error.Count > 0)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, value);
             }

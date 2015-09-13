@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using APP.Navigation;
 using ResourceModels.DomainModel;
 using ResourceModels.Models;
 
@@ -12,6 +13,11 @@ namespace APP.Controllers
 {
     public class DriverController : BaseController
     {
+        public DriverController(INavigation navigation)
+            : base(navigation)
+        {
+           
+        } 
         //// GET: api/Driver
         //public IEnumerable<string> Get()
         //{

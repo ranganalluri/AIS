@@ -3,40 +3,38 @@ using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
+using ResourceModels.DomainModel;
 using ResourceModels.Enums;
 using ResourceModels.Models;
 
 namespace APP.Navigation
 {
-    public  class NavigationHelper
+    public class BaseNode:INavigation
     {
-        private static List<NavigationNode> _navigationNodes=GetAllNodes();
-
-        public NavigationHelper()
+        
+        public virtual void AddNode(NavigationContext context)
         {
-           
+            
         }
 
-        private static List<NavigationNode> GetAllNodes()
+        public virtual void InitialiseNodes(NavigationContext context)
         {
             var nodes = new List<NavigationNode>();
-            nodes.Add(new NavigationNode() { NavigationNodeName = PageType.Customer });
+            nodes.Add(new NavigationNode() { NavigationNodeName = PageType.Customer, Current = true });
             nodes.Add(new NavigationNode() { NavigationNodeName = PageType.Vehicle });
             nodes.Add(new NavigationNode() { NavigationNodeName = PageType.Driver });
             nodes.Add(new NavigationNode() { NavigationNodeName = PageType.DriverHistoryLanding });
             nodes.Add(new NavigationNode() { NavigationNodeName = PageType.DriverHistroy });
             nodes.Add(new NavigationNode() { NavigationNodeName = PageType.Quote });
-            return nodes;
-        } 
-        public  NavigationNode this[PageType pageType]
+            //return nodes;
+        }
+
+        public virtual NavigationNode GetCurrentNode()
         {
-            get { return _navigationNodes.SingleOrDefault(node => node.NavigationNodeName == pageType); }
-            set
-            {
-                var index = _navigationNodes.FindIndex(node => node.NavigationNodeName == pageType);
-                _navigationNodes[index] = value;
-            }
-        }       
+            return null;
+        }
+
     }
     
 }

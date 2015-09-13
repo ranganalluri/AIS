@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Http;
+using APP.Navigation;
 using APP.Processors;
 using APP.Extensions;
 using ResourceModels.DomainModel;
@@ -12,6 +13,11 @@ namespace APP.Controllers
 {
     public class InitialController : BaseController
     {
+        public InitialController(INavigation navigation)
+            : base(navigation)
+        {
+           
+        } 
       
         //// GET: api/Initial/5
         //public string Get(int id)

@@ -15,6 +15,7 @@ namespace ResourceModels.Enums
         DriverHistoryLanding,
         DriverHistroy,
         Quote,
-        Coverage
+        Coverage,
+        CustomerAccess
     }
 }

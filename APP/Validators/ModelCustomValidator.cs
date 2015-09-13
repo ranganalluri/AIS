@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using APP.Navigation;
 using FluentValidation;
 using ResourceModels.Models;
 using StructureMap;
@@ -10,43 +11,36 @@ namespace APP.Validators
 {
     public class ModelCustomValidator<T> : AbstractValidator<T>
     {
-        public IValidator Validator
-        {
-            get;
-            private set;
-        }
-        public List<Errors> Validate1(T value)
-        {
-
-            var errors = new List<Errors>();
-            //var validator = new ModelCustomValidator<T>();
-            var factory = new MyValidationFactory();
-            Validator = factory.GetValidator<T>();
-
-            var result = (Validator.Validate(value));
-            if (!result.IsValid)
-            {
-                result.Errors.ForEach(s => errors.Add(new Errors() {CtrlId = s.PropertyName, Msg = s.ErrorMessage}));
-            }
-            return errors;
-        }
+       
+       
     }
 
-    public class MyRegistry : Registry
+    public class FluentValidationMyRegistry : Registry
     {
-        public MyRegistry()
+        public FluentValidationMyRegistry()
         {
             For<IValidator<Customer>>().Use<CustomerValidator>();
             For<IValidator<Vehicle>>().Use<VehicleValidator>();
-           
+            //For<INavigation>().Use<BaseNode>();
+
         }
     }
 
     public class MyValidationFactory : ValidatorFactoryBase
-    {        
+    {
+        private readonly IContainer _container;
+        public MyValidationFactory(IContainer container)
+        {
+            this._container = container;
+        }
+        public MyValidationFactory()
+        {
+          
+        }
         public override IValidator CreateInstance(Type validatorType)
         {
-            return ObjectFactory.GetInstance(validatorType) as IValidator;
+            return (IValidator)_container.GetInstance(validatorType);
+            //  return ObjectFactory.GetInstance(validatorType) as IValidator;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using APP.Navigation;
 using APP.Processors;
 using APP.Validators;
 using APP.Extensions;
@@ -15,6 +16,11 @@ namespace APP.Controllers
 {
     public class VehicleController : BaseController
     {
+        public VehicleController(INavigation navigation)
+            : base(navigation)
+        {
+           
+        } 
         //// GET: api/Vehicle
         //public HalResource<VehcleModel> Get()
         //{
@@ -70,7 +76,7 @@ namespace APP.Controllers
         // POST: api/Vehicle
         public HttpResponseMessage Post(string key,Vehicle value,int id=0)
         {
-            var error = new ModelCustomValidator<Vehicle>().Validate1(value);
+            var error = base.ValidateModel<Vehicle>(value);
 
             var policy = (PolicyContainer)HttpContext.Current.Cache["policy-" + key];
             value.Id = id;
