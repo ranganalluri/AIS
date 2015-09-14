@@ -138,7 +138,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Builders\" />
     <Folder Include="Domain\" />
     <Folder Include="MediaType\" />
     <Folder Include="Models\" />
@@ -179,6 +178,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Builders\CustomerBuilder.cs" />
+    <Compile Include="Common\IBaseBuilder.cs" />
+    <Compile Include="Common\IWrokflowController.cs" />
+    <Compile Include="Common\WorkflowControllerContext.cs" />
     <Compile Include="Constants\ConstantHelper.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CustmorController.cs" />

@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using APP.Common;
 using APP.Navigation;
 using APP.Processors;
 using APP.Validators;
@@ -16,8 +17,8 @@ namespace APP.Controllers
 {
     public class VehicleController : BaseController
     {
-        public VehicleController(INavigation navigation)
-            : base(navigation)
+        public VehicleController(IWrokflowController workflowController)
+            : base(workflowController)
         {
            
         } 

@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Routing;
+using APP.Common;
 using APP.Navigation;
 using APP.Processors;
 using APP.Validators;
@@ -18,7 +19,8 @@ namespace APP.Controllers
     public class CustomerController : BaseController
     {
 
-        public CustomerController(INavigation navigation) : base(navigation)
+        public CustomerController(IWrokflowController workflowController)
+            : base(workflowController)
         {
            
         }        

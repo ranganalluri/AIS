@@ -8,17 +8,17 @@ namespace APP
 {
     public class StructureMapWebApiServiceActivator : IHttpControllerActivator
     {
-        private readonly IContainer _container;
+        //private readonly IContainer _container;
 
-        public StructureMapWebApiServiceActivator(IContainer container)
-        {
-            this._container = container;
-        }
+        //public StructureMapWebApiServiceActivator(IContainer container)
+        //{
+        //    this._container = container;
+        //}
 
         IHttpController IHttpControllerActivator.Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
         {
 
-            return (IHttpController)_container.GetInstance(controllerType);
+            return (IHttpController)IOC.GetContainer.GetInstance(controllerType);
         }
     }
 }

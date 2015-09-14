@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Http;
+using APP.Common;
 using APP.Navigation;
 using APP.Processors;
 using APP.Extensions;
@@ -13,8 +14,8 @@ namespace APP.Controllers
 {
     public class InitialController : BaseController
     {
-        public InitialController(INavigation navigation)
-            : base(navigation)
+        public InitialController(IWrokflowController workflowController)
+            : base(workflowController)
         {
            
         } 
