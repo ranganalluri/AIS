@@ -10,10 +10,19 @@ namespace APP.Common
 {
     public class WorkflowControllerContext:IWrokflowController
     {
-        private ValidatorFactoryBase _validator;
-        public WorkflowControllerContext(ValidatorFactoryBase validator)
+        private readonly ValidatorFactoryBase _validator;
+
+        private readonly IPolicyContainer _policyContainer;
+        public IPolicyContainer PolicyContainer
+        {
+            get { return _policyContainer; }
+           
+        }
+
+        public WorkflowControllerContext(ValidatorFactoryBase validator,IPolicyContainer policyContainer)
         {
             _validator = validator;
+            _policyContainer = policyContainer;
         }
 
         public INavigation GetNavigation()
@@ -21,7 +30,7 @@ namespace APP.Common
             throw new NotImplementedException();
         }
 
-        public PolicyContainer GetPolicyContainer()
+        public IPolicyContainer GetPolicyContainer()
         {
             throw new NotImplementedException();
         }

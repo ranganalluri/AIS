@@ -8,8 +8,8 @@ using ResourceModels.Models;
 
 namespace APP.Common
 {
-    public interface IBaseBuilder
+    public interface IBaseBuilder<T> where T:BaseViewResource 
     {
-        BaseViewResource Build(PolicyContainer container);
+        T Build(PolicyContainer container);
     }
 }

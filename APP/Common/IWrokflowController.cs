@@ -11,7 +11,8 @@ namespace APP.Common
     public interface IWrokflowController
     {
         INavigation GetNavigation();
-        PolicyContainer GetPolicyContainer();
+        IPolicyContainer GetPolicyContainer();
         IValidator GetValidator<T>();
+        IPolicyContainer PolicyContainer { get; }
     }
 }

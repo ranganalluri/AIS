@@ -1,11 +1,13 @@
 ﻿using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
+using APP.Builders;
 using APP.Common;
 using APP.Navigation;
 using APP.Validators;
 using FluentValidation;
 using FluentValidation.Mvc;
+using ResourceModels.DomainModel;
 using ResourceModels.Models;
 using StructureMap;
 
@@ -23,10 +25,12 @@ namespace APP
 
             container.Configure(c =>
             {
-               c.For<IWrokflowController>().Use<WorkflowControllerContext>();
+                c.For<IWrokflowController>().Use<WorkflowControllerContext>();
                 c.For<INavigation>().Use<BaseNode>();
                 c.For<ValidatorFactoryBase>().Use<MyValidationFactory>();
-               c.AddRegistry(new FluentValidationMyRegistry());
+                c.AddRegistry(new FluentValidationMyRegistry());
+                c.For<IPolicyContainer>().Use<PolicyContainer>();
+                c.For<IBaseBuilder<CustomerViewResource>>().Use<CustomerBuilder>();
                 // c.For<IValidator<Customer>>().Use<CustomerValidator>();
                 //c.For<IValidator<Vehicle>>().Use<VehicleValidator>();
             });

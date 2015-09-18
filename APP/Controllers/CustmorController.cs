@@ -18,40 +18,27 @@ namespace APP.Controllers
 {
     public class CustomerController : BaseController
     {
+        private readonly IBaseBuilder<CustomerViewResource> _builder; 
 
-        public CustomerController(IWrokflowController workflowController)
+        public CustomerController(IWrokflowController workflowController,IBaseBuilder<CustomerViewResource> builder)
             : base(workflowController)
         {
-           
+            _builder = builder;
         }        
         public CustomerViewResource Get(string key,int id=0)
-        {          
-            
-          var policy= (PolicyContainer)HttpContext.Current.Cache["policy-" + key];
+        {
+            var policy= PolicyContainer.GetPolicy(key);
+            policy.ApiHost = Request.GetHeader("ApiHost");
+         
+            var returnValue= _builder.Build(policy);
+            var hal = new HalPorcessor(null, PageType.Customer, policy.ApiHost, key, Url);
+            returnValue.CustomerInfo.Links = hal.BuildHalResource();
 
-            var returnvalue=new CustomerViewResource();
-            
-            var host = Request.GetHeader("ApiHost");
-            if (policy != null && policy.Customer!=null)
-            {
-                returnvalue.CustomerInfo = policy.Customer;
-            }
-            else
-            {
-                returnvalue.CustomerInfo=new Customer();
-            }
-            var hal = new HalPorcessor(null, PageType.Customer, host, key, Url);
-            returnvalue.CustomerInfo.Links = hal.BuildHalResource();
-            
 
-            returnvalue.Links = hal.FillInitialHalList();
-            //TODO we need to verify state is avialble customer in session if not return empty customer from builder
-
-            return returnvalue;
-
+            returnValue.Links = hal.FillInitialHalList();
+            return returnValue;
 
         }       
-
         // POST: api/Custmor
         public HttpResponseMessage Post(string key, Customer value)
         {
@@ -62,11 +49,13 @@ namespace APP.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, value);
             }
-            var policy = (PolicyContainer)HttpContext.Current.Cache["policy-" + key];
+
+            var policy = PolicyContainer.GetPolicy(key);
             if (policy != null)
             {
                 policy.Customer = value;
             }
+
             var returnvalue = value;
             HttpContext.Current.Cache.Insert("policy-" + key, policy);
 

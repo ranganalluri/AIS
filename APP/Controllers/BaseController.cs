@@ -4,6 +4,7 @@ using System.Drawing.Text;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Management;
 using APP.Common;
@@ -22,9 +23,11 @@ namespace APP.Controllers
 
         private IWrokflowController _wrokflowController;
 
-        public PolicyContainer PolicyContainer
+        private String Key = string.Empty;
+
+        public IPolicyContainer PolicyContainer
         {
-            get { return this._wrokflowController.GetPolicyContainer(); }
+            get { return this._wrokflowController.PolicyContainer; }
         }
 
         public BaseController(IWrokflowController workFlowController)
@@ -42,9 +45,10 @@ namespace APP.Controllers
             
         }
 
-        protected virtual HttpResponseMessage HandleGet<T>(T value)
+        protected virtual HttpResponseMessage HandleGet<T>(string key,int id)
         {
-            
+            //PolicyContainer policy = PolicyContainer.GetPolicy(key);          
+
             return null;
         }
         protected virtual HttpResponseMessage ProcessGet<T>(T value)
