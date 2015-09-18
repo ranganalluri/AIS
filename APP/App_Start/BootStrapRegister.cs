@@ -35,8 +35,6 @@ namespace APP
                 //c.For<IValidator<Vehicle>>().Use<VehicleValidator>();
             });
 
-
-
         }
     }
 }
