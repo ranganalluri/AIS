@@ -74,13 +74,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Page.aspx" />
+    <Content Include="Page2.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Page.aspx.cs">
+      <DependentUpon>Page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page.aspx.designer.cs">
+      <DependentUpon>Page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page2.aspx.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page2.aspx.designer.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
